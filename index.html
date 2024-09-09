@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Controle de Materiais - Andaime</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gestão de Controle de Materiais - Andaime</h1>
+    </header>
+    <main>
+        <section class="menu">
+            <button class="menu-button" onclick="showForm('request-mount-form')">Solicitação de Material para Montagem</button>
+            <button class="menu-button" onclick="showForm('return-material-form')">Devolução de Material para Gaveteiro</button>
+            <button class="menu-button" onclick="showForm('scaffold-assembly-form')">Montagem de Andaime</button>
+            <button class="menu-button" onclick="showForm('scaffold-dismantling-form')">Desmontagem de Andaime</button>
+        </section>
+
+        <!-- Formulários -->
+        <section id="request-mount-form" class="form-container hidden">
+            <button class="back-button" onclick="showMenu()">Voltar ao Menu</button>
+            <h2>Solicitação de Material para Montagem</h2>
+            <form action="submit-request-mount.php" method="post">
+                <label for="encarregado-request-mount">Encarregado Responsável:</label>
+                <input type="text" id="encarregado-request-mount" name="encarregado" required>
+                
+                <label for="os-executada-request-mount">OS Executada:</label>
+                <input type="text" id="os-executada-request-mount" name="os-executada" required>
+                
+                <label for="local-atividade-request-mount">Local da Atividade:</label>
+                <input type="text" id="local-atividade-request-mount" name="local-atividade" required>
+                
+                <label for="data-solicitacao-request-mount">Data da Solicitação:</label>
+                <input type="date" id="data-solicitacao-request-mount" name="data-solicitacao" required>
+                
+                <h3>Materiais:</h3>
+                <label for="tubo-roll-request-mount">Tubo Roll 1,00:</label>
+                <input type="number" id="tubo-roll-request-mount" name="tubo-roll" required>
+                
+                <label for="prancha-request-mount">Prancha:</label>
+                <input type="number" id="prancha-request-mount" name="prancha" required>
+                
+                <label for="luva-emenda-request-mount">Luva de Emenda:</label>
+                <input type="number" id="luva-emenda-request-mount" name="luva-emenda" required>
+                
+                <button type="submit">Enviar Solicitação para Administrador</button>
+            </form>
+        </section>
+
+        <section id="return-material-form" class="form-container hidden">
+            <button class="back-button" onclick="showMenu()">Voltar ao Menu</button>
+            <h2>Devolução de Material para Gaveteiro</h2>
+            <form action="submit-return-material.php" method="post">
+                <label for="encarregado-return-material">Encarregado Responsável:</label>
+                <input type="text" id="encarregado-return-material" name="encarregado" required>
+                
+                <label for="os-executada-return-material">OS Executada:</label>
+                <input type="text" id="os-executada-return-material" name="os-executada" required>
+                
+                <label for="local-atividade-return-material">Local da Atividade:</label>
+                <input type="text" id="local-atividade-return-material" name="local-atividade" required>
+                
+                <label for="data-solicitacao-return-material">Data da Solicitação:</label>
+                <input type="date" id="data-solicitacao-return-material" name="data-solicitacao" required>
+                
+                <h3>Materiais:</h3>
+                <label for="tubo-roll-return-material">Tubo Roll 1,00:</label>
+                <input type="number" id="tubo-roll-return-material" name="tubo-roll" required>
+                
+                <label for="prancha-return-material">Prancha:</label>
+                <input type="number" id="prancha-return-material" name="prancha" required>
+                
+                <label for="luva-emenda-return-material">Luva de Emenda:</label>
+                <input type="number" id="luva-emenda-return-material" name="luva-emenda" required>
+                
+                <button type="submit">Enviar Devolução para Administrador</button>
+            </form>
+        </section>
+
+        <section id="scaffold-assembly-form" class="form-container hidden">
+            <button class="back-button" onclick="showMenu()">Voltar ao Menu</button>
+            <h2>Montagem de Andaime</h2>
+            <form action="submit-scaffold-assembly.php" method="post" enctype="multipart/form-data">
+                <label for="encarregado-scaffold-assembly">Encarregado Responsável:</label>
+                <input type="text" id="encarregado-scaffold-assembly" name="encarregado" required>
+                
+                <label for="os-executada-scaffold-assembly">OS Executada:</label>
+                <input type="text" id="os-executada-scaffold-assembly" name="os-executada" required>
+                
+                <label for="local-atividade-scaffold-assembly">Local da Atividade:</label>
+                <input type="text" id="local-atividade-scaffold-assembly" name="local-atividade" required>
+                
+                <label for="data-solicitacao-scaffold-assembly">Data da Solicitação:</label>
+                <input type="date" id="data-solicitacao-scaffold-assembly" name="data-solicitacao" required>
+                
+                <h3>Materiais:</h3>
+                <label for="tubo-roll-scaffold-assembly">Tubo Roll 1,00:</label>
+                <input type="number" id="tubo-roll-scaffold-assembly" name="tubo-roll" required>
+                
+                <label for="prancha-scaffold-assembly">Prancha:</label>
+                <input type="number" id="prancha-scaffold-assembly" name="prancha" required>
+                
+                <label for="luva-emenda-scaffold-assembly">Luva de Emenda:</label>
+                <input type="number" id="luva-emenda-scaffold-assembly" name="luva-emenda" required>
+                
+                <label for="photo-scaffold-assembly">Enviar Foto:</label>
+                <input type="file" id="photo-scaffold-assembly" name="photo" accept="image/*">
+                
+                <button type="submit">Enviar Montagem para Administrador</button>
+            </form>
+        </section>
+
+        <section id="scaffold-dismantling-form" class="form-container hidden">
+            <button class="back-button" onclick="showMenu()">Voltar ao Menu</button>
+            <h2>Desmontagem de Andaime</h2>
+            <form action="submit-scaffold-dismantling.php" method="post" enctype="multipart/form-data">
+                <label for="encarregado-scaffold-dismantling">Encarregado Responsável:</label>
+                <input type="text" id="encarregado-scaffold-dismantling" name="encarregado" required>
+                
+                <label for="os-executada-scaffold-dismantling">OS Executada:</label>
+                <input type="text" id="os-executada-scaffold-dismantling" name="os-executada" required>
+                
+                <label for="local-atividade-scaffold-dismantling">Local da Atividade:</label>
+                <input type="text" id="local-atividade-scaffold-dismantling" name="local-atividade" required>
+                
+                <label for="data-solicitacao-scaffold-dismantling">Data da Solicitação:</label>
+                <input type="date" id="data-solicitacao-scaffold-dismantling" name="data-solicitacao" required>
+                
+                <h3>Materiais:</h3>
+                <label for="tubo-roll-scaffold-dismantling">Tubo Roll 1,00:</label>
+                <input type="number" id="tubo-roll-scaffold-dismantling" name="tubo-roll" required>
+                
+                <label for="prancha-scaffold-dismantling">Prancha:</label>
+                <input type="number" id="prancha-scaffold-dismantling" name="prancha" required>
+                
+                <label for="luva-emenda-scaffold-dismantling">Luva de Emenda:</label>
+                <input type="number" id="luva-emenda-scaffold-dismantling" name="luva-emenda" required>
+                
+                <label for="photo-scaffold-dismantling">Enviar Foto:</label>
+                <input type="file" id="photo-scaffold-dismantling" name="photo" accept="image/*">
+                
+                <button type="submit">Enviar Desmontagem para Administrador</button>
+            </form>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

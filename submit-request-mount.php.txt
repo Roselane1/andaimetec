@@ -1,0 +1,34 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Dados do formulário
+    $encarregado = $_POST['encarregado'];
+    $os_executada = $_POST['os-executada'];
+    $local_atividade = $_POST['local-atividade'];
+    $data_solicitacao = $_POST['data-solicitacao'];
+    $tubo_roll = $_POST['tubo-roll'];
+    $prancha = $_POST['prancha'];
+    $luva_emenda = $_POST['luva-emenda'];
+
+    // Configurações do e-mail
+    $to = "laninhasilva427@hotmail.com";
+    $subject = "Solicitação de Material para Montagem";
+    $message = "
+        Encarregado Responsável: $encarregado\n
+        OS Executada: $os_executada\n
+        Local da Atividade: $local_atividade\n
+        Data da Solicitação: $data_solicitacao\n
+        Materiais:\n
+        Tubo Roll 1,00: $tubo_roll\n
+        Prancha: $prancha\n
+        Luva de Emenda: $luva_emenda
+    ";
+    $headers = "From: no-reply@seusite.com";
+
+    // Enviar e-mail
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Solicitação enviada com sucesso!";
+    } else {
+        echo "Falha ao enviar a solicitação.";
+    }
+}
+?>
